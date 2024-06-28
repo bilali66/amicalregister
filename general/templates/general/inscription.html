@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+Inscription
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <form class="col s12" method = 'POST' action = "newPersonne">
+        {% csrf_token %}
+      <div class="row">
+        <div class="input-field col s6">
+          <input placeholder="Fist Name" id="first_name" type="text" class="validate" name = "first_name">
+          <label for="first_name" >Prénom</label >
+        </div>
+        <div class="input-field col s6">
+          <input placeholder="Last Name"  id="last_name" type="text" class="validate" name = "last_name">
+          <label for="last_name" >Nom</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+            <input name = "adresse" placeholder="Adresse" id="adresse" type="text" class="validate" >
+            <label for="adresse" >Adresse</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="Phone number"  id="phone" type="text" class="validate" name = "phone">
+            <label for="phone" >Numéro de téléphone</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Email" id="email" type="email" class="validate" name="email">
+          <label for="mail" >Adresse Email</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+            <input placeholder="User name" id="username" type="text" class="validate" name = "user_name">
+            <label for="username" >Nom d'utilisateur</label>
+          </div>
+          <div class="input-field col s6">
+            <input placeholder="Password"  id="password" type="password" class="validate" name = "password">
+            <label for="password" >Mot de passe</label>
+          </div>
+      </div>
+      <!-- div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Photo" id="photo" type="file" class="validate" name="photo">
+          <label for="email">Photo </label>
+        </div>
+      </div -->
+      <button class="btn waves-effect waves-light" type="submit" name="action">S'inscrire
+        <i class="material-icons right"> </i>
+      </button>
+    </form>
+  </div>
+        
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block content %}
+<form action="newarcticle" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form|materializecss  }}
+    <button type="submit">
+        Sauvegarder
+    </button>
+</form>
+{% endblock %}

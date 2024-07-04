@@ -5,17 +5,51 @@
 background : 5px;
 padding: 500px 500px 300px 0;
 </style> 
-   <div class="row" style ="padding-lef : 2px">
+<div id = "content">
+   <div class="row" >
         {% for article in articles %}
         {% if article.stock != 0 %}
         <div class="card" style="width: 18rem;">
           <img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap" height=>
           <div class="card-body">
-            <h5 class="card-title">{{ article.name }}</h5>
-            <a href="{% url 'accueil' %} " class="btn btn-primary">Go somewhere</a>
+            <h1 class="card-title">{{ article.prix }} FCFA</h1> 
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLongTitle{{ article.id }}">Voire </button>
+          
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModalLongTitle{{ article.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">{{ article.name }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="card" style="100%;">
+                  <img class="card-img-top" src="{{ article.image.url }}" alt="Card image cap" height=>
+                  <div class="card-body">
+                    <h5 class="card-title"> Prix : {{ article.prix }} FCFA</h5>
+                    <h5 class="card-title"> Stock : {{ article.stock }}</h5>
+                  </div>
+                </div>
+                <div style="100%;">
+                  <h5 class="card-title"> Description </h5>
+                  {{article.description}}
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a  href="{% url 'commander' id=article.id %}" type="button" class="btn btn-primary">Ajouter au panier</a>
+              </div>
+            </div>
           </div>
         </div>
             {% endif %}
         {% endfor %}
    </div>
+  </div>
+
 {% endblock %}

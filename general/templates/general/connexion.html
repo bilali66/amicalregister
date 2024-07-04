@@ -1,10 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}
-Inscription
+connexion
 {% endblock %}
 
 {% block content %}
+{% if  badcredential %}
+<div id= 'alerte'>
+  Nom d'utilisateur ou mot de passe incorrecte  <br>
+  Veuiller vérifier les informations saisies ou <a  href="{% url 'inscription' %}">créer un compte </a> si vous n'en avez pas un. <br> <br>
+    </div>
+{% endif %}
 <div class="row">
     <form class="col s12" method = 'POST' action = "connexion">
         {% csrf_token %}
@@ -24,7 +30,7 @@ Inscription
           <label for="email">Photo </label>
         </div>
       </div -->
-      <button class="btn waves-effect waves-light" type="submit" name="action">S'inscrire
+      <button class="btn waves-effect waves-light" type="submit" name="action">Se connecter
         <i class="material-icons right"> </i>
       </button>
     </form>

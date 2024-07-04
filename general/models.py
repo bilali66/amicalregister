@@ -1,6 +1,6 @@
 from django.db import models
 from django.conf import settings
-from django.forms import  ModelForm
+from django.forms import  ModelForm, inlineformset_factory, modelformset_factory
 # Create your models here.
 
 class Personne(models.Model):
@@ -47,8 +47,19 @@ class Commande(models.Model):
 Les formulaires
 
 """
-
+class CommandeForm(ModelForm):
+    class Meta:
+        model =  Commande
+        fields = ["quantite"]
+    
+    
+    
+    
+    
+    
 class ArticleForm(ModelForm):
     class Meta:
         model = Article
         fields = ['name', 'prix', 'image', 'stock', 'description']
+        
+CommandeFormSet = modelformset_factory(Commande, fields=('quantite',), extra=0, can_delete=True)

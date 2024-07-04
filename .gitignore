@@ -9,7 +9,7 @@ myvenv/
 venv/
 
 # Base de donnée
-db.sqlite3
+#db.sqlite3
 
 # Dossier "static" à la racine du projet
 /static/

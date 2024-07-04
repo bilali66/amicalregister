@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    < link rel="stylesheet" href="style.css" -->
+    
+    <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" -->
+    
     {% block css %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'general/style.css' %}">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.1/css/materialize.min.css" integrity="sha256-qj3p6P1fJIV+Ndv7RW1ovZI2UhOuboj9GcODzcNFIN8=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 {% endblock css %}
 
     <title>{% block title %}Sen Boutique{% endblock %}</title>
@@ -42,6 +46,14 @@
             <li class="nav-item active">
                 <a class="nav-link" href="{% url 'deconnexion' %}">Deconnexion </a>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'panier' %}">Panier </a>
+            </li>
+                {% if user.is_superuser %}
+                    <li class="nav-item">
+                        <a id='aaddmin' class="nav-link" href="{% url 'admin:index' %}">Espace Admin</a>
+                    </li>
+                {% endif %}
             {% endif %}
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -66,9 +78,7 @@
                 </form>
            
              
-                <li class="nav-item">
-                    <a id='aaddmin' class="nav-link" href="#">Espace Admin</a>
-                </li>
+                
             
             </ul>
         </div>
@@ -83,10 +93,15 @@
         {% block content %}
         
         {% endblock %}
+
+  
     </div>
 
 
     {% block javascript %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -101,8 +116,15 @@
       $('.datepicker').datepicker({'format': 'yyyy-mm-dd'});
       $('select').formSelect();
       $(".button-collapse").sideNav();
+      const myModal = document.getElementById('myModal')
+      const myInput = document.getElementById('myInput')
+
+      myModal.addEventListener('shown.bs.modal', () => {
+      myInput.focus()
+})
     
     });
+    
     </script>
     {% endblock javascript %}
 </body>

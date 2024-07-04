@@ -124,6 +124,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
@@ -142,3 +143,24 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 APPEND_SLASH=False
+
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'senemarche206@gmail.com'
+EMAIL_HOST_PASSWORD = 'wucomsudxhabxhkj'
+
+
+
+"""
+    
+    
+    wucomsudxhabxhkj
+How to use it
+Go to the settings for your Google Account in the application or device you are trying to set up. Replace your password with the 16-character password shown above.
+Just like your normal password, this app password grants complete access to your Google Account. You won't need to remember it, so don't write it down or share it with anyone.
+    """

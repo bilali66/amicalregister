@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load materializecss %}
+{% block content %}
+<form action="confirmPanier" method="POST" enctype="multipart/form-data">
+    
+    {% csrf_token %}
+    {{ forms.management_form }}
+
+    <div class="row" style ="padding-lef : 2px">
+    {% for form in forms %}
+    
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ form.instance.article.image.url }}" alt="Card image cap" height=>
+        <div class="card-body">
+          <h5 class="card-title">{{ form.instance.article.name }}</h5>
+          <h5 class="card-title">Prix : {{ form.instance.article.prix }} FCFA</h5>
+          <h5 class="card-title">{{ form.quantite }}</h5>
+          <h5 class="card-title">{{ form.id }}</h5>
+          
+        </div>
+      </div>
+    {% endfor%}
+
+</div>
+    <!-- table class="table">
+        <thead>
+            <tr>
+                <th>Article</th>
+                <th>Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in formset %}
+                <tr>
+                    <td>{{ form.instance.article.name }}
+                        <img class="card-img-top" src="{{ form.instance.article.image.url }}" alt="Card image cap" height=>
+                    </td>
+                    <td>{{ form.quantite }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table -->
+    <button type="submit" class="btn btn-primary">Update Cart</button>
+</form>
+{% endblock %}

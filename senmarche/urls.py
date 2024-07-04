@@ -24,7 +24,10 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'), 
+    path("panier/", views.panier, name='panier'),
+    path("panier/confirmPanier", views.confirmPanier, name='confirmPanier'),
+    path("commander/<str:id>/", views.commander, name='commander'),
     path("", views.accueil, name='accueil'),
     path("inscription/", views.inscription, name='inscription'),
     path("inscription/newPersonne", views.newPersonne, name='newPersonne'),

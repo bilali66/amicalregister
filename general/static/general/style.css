@@ -1,6 +1,6 @@
 body{
   padding: 0rem;
-  margin: 5%; 
+  margin: 0rem; 
 }
 .card{
   padding-top: 2%;
@@ -13,9 +13,36 @@ body{
 }
 #content{
   margin-left: 2rem;
- padding-left: 10px;
+ padding-left: 2rem;
+ margin-right: 2rem;
 }
 .card-title{
   color:brown;
   font-weight: bold;
+}
+footer{
+  background-color: rgb(29, 27, 27);
+}
+.spaceentreCloseETcommander{
+  display: block;
+  padding-left: 0%;
+  margin-left: 0%;
+  width: 60rem;
+  margin-right: 60%;
+}
+
+
+.footer{
+  margin: 0rem;
+  padding: 0rem;
+}
+
+.prixTotal{
+  display: block;
+  width: 100%;
+  color: brown;
+  text-align: center;
+}
+.recuCommande{
+  padding-right: 2rem;
 }

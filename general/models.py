@@ -41,7 +41,20 @@ class Commande(models.Model):
     def __str__(self):
         return f"{self.article.name}: {self.quantite}; statut: {self.statut}"
     
+class Etudiant(models.Model):
+    prenom = models.CharField(max_length=100)
+    nom = models.CharField(max_length=100)
+    village = models.CharField(max_length=100)
+    Sexe = models.CharField(max_length=100)
+    universite = models.CharField(max_length=100)
+    departement = models.CharField(max_length=100)
+    email = models.CharField(max_length=100)
+    fac = models.CharField(max_length=100)
+    niveau = models.CharField(max_length=100)
     
+    
+    def __str__(self):
+        return f"{self.prenom} {self.nom}"
 
 """ 
 Les formulaires

@@ -1,45 +1,54 @@
 {% extends "base.html" %}
+{% load my_filters %}
 {% load materializecss %}
 {% block content %}
-<form action="confirmPanier" method="POST" enctype="multipart/form-data">
-    
-    {% csrf_token %}
-    {{ forms.management_form }}
 
-    <div class="row" style ="padding-lef : 2px">
-    {% for form in forms %}
-    
-    <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="{{ form.instance.article.image.url }}" alt="Card image cap" height=>
-        <div class="card-body">
-          <h5 class="card-title">{{ form.instance.article.name }}</h5>
-          <h5 class="card-title">Prix : {{ form.instance.article.prix }} FCFA</h5>
-          <h5 class="card-title">{{ form.quantite }}</h5>
-          <h5 class="card-title">{{ form.id }}</h5>
-          
-        </div>
-      </div>
-    {% endfor%}
-
+{% if  nbr == 0 %}
+<div class="message" >
+   <h2> Aucun étudiant n'est encore inscrit.</h2>
 </div>
-    <!-- table class="table">
-        <thead>
-            <tr>
-                <th>Article</th>
-                <th>Quantité</th>
-            </tr>
+{% else %}
+<div class="prixTotal" > 
+  <a href="{% url 'download_etudiants_pdf' %}" class="btn btn-primary">Télécharger la Liste des Étudiants (PDF)</a> <br> <br>
+  <a href="{% url 'download_etudiants_excel' %}" class="btn btn-primary">Télécharger la Liste des Étudiants (Excel)</a> <br>
+  <h2> Nombre total des étudiants inscrits:  {{nbr}}  </h2>
+  <h3> Hommes:  {{nbrH}}   ({{nbrH|pourcent:nbr}} %) </h3>
+  <h3> Filles:  {{nbrF}}   ({{nbrF|pourcent:nbr}} %) </h3>
+</div>
+<div class="message" >
+  <h2> Liste des {{nbr}} étudiants.</h2>
+</div>
+<div class="recuCommande" >
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Sexe</th>
+            <th scope="col">Village</th>
+            <th scope="col">Université</th>
+            <th scope="col">Niveau</th>
+          </tr>
         </thead>
         <tbody>
-            {% for form in formset %}
-                <tr>
-                    <td>{{ form.instance.article.name }}
-                        <img class="card-img-top" src="{{ form.instance.article.image.url }}" alt="Card image cap" height=>
-                    </td>
-                    <td>{{ form.quantite }}</td>
-                </tr>
-            {% endfor %}
+            {% for etu in etudiants%}
+          <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{etu.prenom}}</td>
+            <td>{{etu.nom}}</td>
+            <td>{{etu.Sexe}}</td>
+            <td>{{etu.village}}</td>
+            <td>{{etu.universite}}</td>
+            <td>{{etu.niveau}}</td>
+          </tr>
+          
+          {% endfor%}
         </tbody>
-    </table -->
-    <button type="submit" class="btn btn-primary">Update Cart</button>
-</form>
+      </table>
+      
+ </div>
+
+
+{% endif %}
 {% endblock %}

@@ -23,5 +23,5 @@ def connexion(request):
     if user is not None:
         #personne = Personne.objects.get(user=user)
         login(request, user)
-        return redirect("accueil")
+        return redirect("panier")
     return render(request, 'general/connexion.html', {'badcredential':True})

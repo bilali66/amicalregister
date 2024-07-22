@@ -5,55 +5,78 @@ Inscription
 {% endblock %}
 
 {% block content %}
+{% if inscrit %}
+{%if message %}
+<div class="message" >
+  <h2> Vous êtes déja inscrit.</h2>
+  Vous ne pouvez pas vous inscrire deux fois.
+</div>
+{% else %}
+<div class="message" >
+  <h2> Inscription réussie avec succés.</h2>
+</div>
+{% endif %}
+{% else %}
 <div class="row">
     <form class="col s12" method = 'POST' action = "newPersonne">
         {% csrf_token %}
       <div class="row">
         <div class="input-field col s6">
-          <input placeholder="Fist Name" id="first_name" type="text" class="validate" name = "first_name">
+          <input placeholder="Entrer votre prénom" id="first_name" type="text" class="validate" name = "first_name">
           <label for="first_name" >Prénom</label >
         </div>
         <div class="input-field col s6">
-          <input placeholder="Last Name"  id="last_name" type="text" class="validate" name = "last_name">
+          <input placeholder="Entrer votre nom"  id="last_name" type="text" class="validate" name = "last_name">
           <label for="last_name" >Nom</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-            <input name = "adresse" placeholder="Adresse" id="adresse" type="text" class="validate" >
-            <label for="adresse" >Adresse</label>
+            <input name = "adresse" placeholder="Entrer votre village natal" id="adresse" type="text" class="validate" >
+            <label for="adresse" >Village</label>
           </div>
           <div class="input-field col s6">
-            <input placeholder="Phone number"  id="phone" type="text" class="validate" name = "phone">
-            <label for="phone" >Numéro de téléphone</label>
+            <!-- input placeholder="Phone number"  id="phone" type="text" class="validate" name = "phone" -->
+            <select class="form-select" multiple aria-label="multiple select example" name = "sexe">
+              <option selected>sélectionner un sexe</option>
+              <option value="M">Masculin</option>
+              <option value="F">Féminin</option>
+            </select>
+            <label for="phone" >Sexe</label>
           </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Email" id="email" type="email" class="validate" name="email">
-          <label for="mail" >Adresse Email</label>
+          <input placeholder="Entrer votre université" id="email" type="text" class="validate" name="universite">
+          <label for="mail" >Université</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s6">
-            <input placeholder="User name" id="username" type="text" class="validate" name = "user_name">
-            <label for="username" >Nom d'utilisateur</label>
+            <input placeholder="Entrer votre faculté" id="username" type="text" class="validate" name = "fac">
+            <label for="username" >Faculté</label>
           </div>
           <div class="input-field col s6">
-            <input placeholder="Password"  id="password" type="password" class="validate" name = "password">
-            <label for="password" >Mot de passe</label>
+            <input placeholder="Entrer votre département"  id="text" type="text" class="validate" name = "dep">
+            <label for="Département" >Département</label>
           </div>
       </div>
-      <!-- div class="row">
+      <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Photo" id="photo" type="file" class="validate" name="photo">
-          <label for="email">Photo </label>
+          <input placeholder="Entrer votre niveau d'études" id="email" type="text" class="validate" name="niveau">
+          <label for="mail" >Niveau d'études</label>
         </div>
-      </div -->
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input placeholder="Entrer votre email" id="email" type="text" class="validate" name="email">
+          <label for="mail" >Email</label>
+        </div>
+      </div>
       <button class="btn waves-effect waves-light" type="submit" name="action">S'inscrire
         <i class="material-icons right"> </i>
       </button>
     </form>
   </div>
-        
+{% endif %}     
 {% endblock %}

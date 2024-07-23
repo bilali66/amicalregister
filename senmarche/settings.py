@@ -39,9 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'utilisateur',
     'general',
-    'materializecssform',
-    'crispy_forms',
-    'bootstrap5',
 ]
 
 MIDDLEWARE = [
